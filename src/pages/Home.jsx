@@ -9,7 +9,6 @@ import {
 } from "../data/content.js";
 import useTyping from "../hooks/useTyping.js";
 import ProjectCard from "../components/ProjectCard.jsx";
-import { useState } from "react";
 
 function Hero() {
   const typed = useTyping(identity.typingRoles);
@@ -146,67 +145,61 @@ function Journey() {
 }
 
 function Contact() {
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    // TODO: wire this form to Formspree
-    //   1. Create a form at https://formspree.io and get its endpoint ID
-    //   2. Replace this handler with: <form action="https://formspree.io/f/YOUR_ID" method="POST">
-    setSent(true);
-  }
-
-  const showGithub = !contact.github.startsWith("[");
-  const showLinkedin = !contact.linkedin.startsWith("[");
+  const channels = [
+    {
+      label: "GitHub",
+      value: "@MiasMax",
+      href: contact.github,
+      arrow: "↗",
+      external: true,
+    },
+    {
+      label: "LinkedIn",
+      value: "Maxence Tournaud",
+      href: contact.linkedin,
+      arrow: "↗",
+      external: true,
+    },
+    {
+      label: "Email",
+      value: contact.email,
+      href: `mailto:${contact.email}`,
+      arrow: "→",
+    },
+    {
+      label: "CV",
+      value: "PDF, 2 pages",
+      href: "/cv.pdf",
+      arrow: "↓",
+      download: "CV_Maxence_Tournaud.pdf",
+    },
+  ];
 
   return (
     <section className="section" id="contact">
       <h2 className="section-title reveal">
         <span className="title-num mono">05</span> Contact
       </h2>
-      <div className="contact-wrap reveal">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <label>
-            Name
-            <input type="text" name="name" required autoComplete="name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" required autoComplete="email" />
-          </label>
-          <label>
-            Message
-            <textarea name="message" rows="5" required />
-          </label>
-          <button type="submit" className="btn btn-primary" disabled={sent}>
-            {sent ? "Thanks! (form not wired yet)" : "Send"}
-          </button>
-        </form>
-        <div className="contact-links">
-          <p>Elsewhere:</p>
+      <p className="contact-pitch reveal">
+        Apprenticeship, homelab talk or just saying hi. Pick a channel:
+      </p>
+      <div className="contact-list">
+        {channels.map((c) => (
           <a
-            href={showGithub ? contact.github : "#contact"}
-            className="btn btn-outline"
-            target={showGithub ? "_blank" : undefined}
-            rel="noreferrer"
+            key={c.label}
+            href={c.href}
+            className="contact-row reveal"
+            target={c.external ? "_blank" : undefined}
+            rel={c.external ? "noreferrer" : undefined}
+            download={c.download}
           >
-            GitHub {showGithub ? "↗" : "(soon)"}
+            <span className="contact-label mono">{c.label}</span>
+            <span className="contact-value">{c.value}</span>
+            <span className="contact-arrow" aria-hidden="true">
+              {c.arrow}
+            </span>
           </a>
-          <a
-            href={showLinkedin ? contact.linkedin : "#contact"}
-            className="btn btn-outline"
-            target={showLinkedin ? "_blank" : undefined}
-            rel="noreferrer"
-          >
-            LinkedIn {showLinkedin ? "↗" : "(soon)"}
-          </a>
-          <a href={`mailto:${contact.email}`} className="btn btn-outline">
-            {contact.email}
-          </a>
-          <a href="/cv.pdf" className="btn btn-outline" download="CV_Maxence_Tournaud.pdf">
-            Download CV ↓
-          </a>
-        </div>
+        ))}
       </div>
     </section>
   );

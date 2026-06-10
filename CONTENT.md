@@ -20,8 +20,6 @@ Most content is now filled in `src/data/content.js`. What's left:
 
 ## Functional TODOs
 
-- **Contact form**: UI-only. Wire it to Formspree, see the TODO in
-  `src/pages/Home.jsx`.
 - **Uptime badges**: the `SERVICES` map in `api/server.js` is empty; add
   `host`/`port` entries for `homelab`, `vpn`, `genshinguess`, `games` to turn
   the gray "unknown" badges green/red.
