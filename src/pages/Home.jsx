@@ -36,6 +36,9 @@ function Hero() {
           <Link to="/homelab" className="btn btn-outline">
             My homelab
           </Link>
+          <a href="/cv.pdf" className="btn btn-outline" download="CV_Maxence_Tournaud.pdf">
+            Download CV ↓
+          </a>
         </div>
       </div>
     </section>
@@ -196,6 +199,12 @@ function Contact() {
             rel="noreferrer"
           >
             LinkedIn {showLinkedin ? "↗" : "(soon)"}
+          </a>
+          <a href={`mailto:${contact.email}`} className="btn btn-outline">
+            {contact.email}
+          </a>
+          <a href="/cv.pdf" className="btn btn-outline" download="CV_Maxence_Tournaud.pdf">
+            Download CV ↓
           </a>
         </div>
       </div>

@@ -50,7 +50,8 @@
 % ----------------------------
 % ESPACEMENT GLOBAL PLUS COMPACT
 % ----------------------------
-\AtBeginDocument{\setlength{\maketitlewidth}{\textwidth}}
+% \maketitlewidth n'existe plus dans les versions récentes de moderncv
+\AtBeginDocument{\ifdefined\maketitlewidth\setlength{\maketitlewidth}{\textwidth}\fi}
 
 %========================================================================================
 % INFORMATIONS PERSONNELLES
@@ -112,18 +113,15 @@
     pour l'ensemble de la DSI (serveurs, réseau, VLANs, logiciels).}%
     \smallskip
     \begin{itemize}
-
         %-- DÉVELOPPEMENT APPLICATIF --
         \item \textbf{Conception et développement d’une application de CMDB~:}
         Conception et développement d’une application de \textbf{CMDB}, Réalisation de la modélisation des données, de la conception de l’API REST ainsi que de l’interface utilisateur. Développement des principales fonctionnalités métier permettant la gestion de l’inventaire complet (serveurs, équipements réseau, VLANs, adresses IP).
-        
     \item \textbf{Sécurité \& gestion des accès~:}
     Conception et implémentation d’un système de \textbf{rôles et permissions}
     adossé à l’\textbf{Active Directory (LDAPS/TLS)}. Mise en place d’un contrôle
     d’accès en lecture/écriture assurant la confidentialité des données sensibles.
     Configuration de \textbf{TLS/LDAPS} pour sécuriser les échanges inter-serveurs,
     notamment la transmission des identifiants utilisateurs vers l’Active Directory.
-        
       %-- DÉPLOIEMENT & DEVOPS --
       \item \textbf{DevOps \& Déploiement automatisé~:}
             Architecturé une infrastructure de \textbf{3~serveurs} sous
@@ -131,7 +129,6 @@
             \textbf{CI\,/\,CD complète sur GitLab}~:
             build automatique, registre d'images,
             déploiement en production déclenché à chaque \textit{push} sur la branche principale.
-
     \end{itemize}
   }
 
@@ -225,7 +222,7 @@
   {Université Paris-Saclay, IUT d'Orsay}%
   {Orsay\,(91)}%
   {\textbf{Classement général~: Top\,10} sur une promotion de 63 étudiants}%
-  {%%}
+  {}
 
 %========================================================================================
 % SECTION 5 : LANGUES

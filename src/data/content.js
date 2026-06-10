@@ -92,8 +92,8 @@ export const projects = [
   {
     title: "CMDB Application",
     description:
-      "Full-stack configuration management database for the Paris Brain Institute's DSI. Inventory of servers, network assets and links, queryable database, automated GitLab CI/CD deployment.",
-    tags: ["React", "Laravel", "SQL", "Docker", "GitLab CI/CD"],
+      "Full-stack configuration management database for the Paris Brain Institute's DSI. React front, Laravel REST API, roles and permissions wired to Active Directory over LDAPS, three-server Docker setup deployed by GitLab CI/CD on every push.",
+    tags: ["React", "Laravel", "Docker", "LDAPS", "GitLab CI/CD"],
     status: "In Progress",
     featured: true,
   },
@@ -107,6 +107,14 @@ export const projects = [
     service: "genshinguess",
   },
   {
+    title: "Battle Royale Game",
+    description:
+      "Unity battle royale built by a team of 10. I worked on player input serialization and the weapon system, and managed the GitHub repo: branching, versioning, keeping ten people from stepping on each other.",
+    tags: ["Unity", "C#", "Git", "Teamwork"],
+    status: "Done",
+    github: "[GITHUB_URL]",
+  },
+  {
     title: "INSEE Salary Analysis",
     description:
       "Statistical analysis of 2023 net salaries across French departements: normality tests, skewness, kurtosis and data viz, with a slide deck generated from code.",
@@ -118,11 +126,11 @@ export const projects = [
 
 export const journey = [
   {
-    period: "2025 - 2028",
-    title: "Network & Infrastructure Apprentice",
-    org: "Paris Brain Institute (Institut du Cerveau), DSI",
+    period: "Sept 2025 - Sept 2028",
+    title: "Engineering Apprentice, Dev & IT Infrastructure",
+    org: "Paris Brain Institute (ICM), DSI, Pitié-Salpêtrière, Paris",
     type: "work",
-    text: "Datacenter network admin: switches, VLANs, firewall flows. Building the IT service catalogue and a CMDB app for the team.",
+    text: "Infrastructure & Networks division (CloudOps and Network teams). Datacenter network admin: switches, VLANs, firewall flows. Main mission: building a CMDB centralizing the whole IT inventory.",
   },
   {
     period: "2025 - 2028",
@@ -132,18 +140,25 @@ export const journey = [
     text: "Computer science engineering with a focus on systems and networks. Graph theory, SAT solvers, statistics.",
   },
   {
-    period: "[DATES], before Sept 2024",
-    title: "Software Developer Intern",
-    org: "Suez Smart Solutions",
+    period: "2025, 4 months",
+    title: "JavaScript Developer Intern",
+    org: "WebGames, Caen",
     type: "work",
-    text: "Secured API development in C#, mapping features with OpenLayers, code quality work with ESLint and StyleCop on Azure DevOps.",
+    text: "Built an advanced map editor (5,200+ lines of JS): hierarchical layers, nested groups, drag and drop, grid culling for massive scenes. Shipped to production.",
   },
   {
-    period: "[DATES]",
-    title: "BUT Informatique (2 years)",
-    org: "[INSTITUTION]",
+    period: "May - July 2024",
+    title: "Full-Stack Developer Intern",
+    org: "Suez Smart Solutions, Île-de-France",
+    type: "work",
+    text: "Secured API development with cryptography for water treatment systems, mapping features with OpenLayers, Azure DevOps in an Agile team.",
+  },
+  {
+    period: "2022 - 2025",
+    title: "BUT Informatique",
+    org: "Université Paris-Saclay, IUT d'Orsay",
     type: "education",
-    text: "University technology degree in computer science, before joining ENSIIE.",
+    text: "Three-year computer science degree. Ranked top 10 of a class of 63.",
   },
 ];
 
@@ -152,7 +167,8 @@ export const homelab = {
   intro: `An old PC, Ubuntu Server, a fixed IP and way too many Docker
 containers. This page shows what actually runs on it, live.`,
   hardware: [
-    { label: "Host", value: "Recycled desktop PC" },
+    { label: "Board", value: "Asus TUF Gaming B450-Plus" },
+    { label: "RAM", value: "16 GB" },
     { label: "OS", value: "Ubuntu Server" },
     { label: "Containers", value: "Docker + Portainer" },
     { label: "Access", value: "WireGuard VPN" },
@@ -202,12 +218,12 @@ containers. This page shows what actually runs on it, live.`,
 };
 
 export const contact = {
-  github: "[GITHUB_URL]",
-  linkedin: "[LINKEDIN_URL]",
-  email: "[CONTACT_EMAIL]",
+  github: "https://github.com/MiasMax",
+  linkedin: "https://fr.linkedin.com/in/maxence-tournaud-4b1726270",
+  email: "tournaudmax@gmail.com",
 };
 
 export const footer = {
-  domain: "[DOMAIN]",
-  stack: ["Ubuntu Server", "Docker", "Nginx", "[DOMAIN]"],
+  domain: "miasmax.com",
+  stack: ["Ubuntu Server", "Docker", "Nginx", "miasmax.com"],
 };

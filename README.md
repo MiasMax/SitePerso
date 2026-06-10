@@ -46,7 +46,7 @@ direct load.
 
 ```nginx
 server {
-    server_name yourdomain.example;
+    server_name miasmax.com;
 
     location / {
         proxy_pass http://127.0.0.1:8088;
@@ -56,7 +56,7 @@ server {
 }
 ```
 
-Then add HTTPS with certbot: `certbot --nginx -d yourdomain.example`.
+Then add HTTPS with certbot: `certbot --nginx -d miasmax.com`.
 
 ## Wiring `/api/status` to real metrics
 
