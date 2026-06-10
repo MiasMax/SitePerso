@@ -9,6 +9,7 @@ export const identity = {
   tagline: "NETWORK · INFRA · CODE",
   typingRoles: [
     "Network Engineer",
+    "Full-stack developer",
     "DevOps enthusiast",
     "Homelab tinkerer",
     "ENSIIE student",
@@ -17,15 +18,17 @@ export const identity = {
 };
 
 export const about = {
-  intro: `Network and infrastructure apprentice at the Paris Brain Institute,
-engineering student at ENSIIE. Days spent in datacenter configs,
-evenings spent breaking my own home server. I like knowing exactly
-what runs where, and why.`,
+  intro: `Software & infrastructure apprentice at the Paris Brain Institute,
+engineering student at ENSIIE. I build full-stack apps and run the
+servers they sit on. Days spent in datacenter configs and CI/CD
+pipelines, evenings spent breaking my own home server. I like knowing
+exactly what runs where, and why.`,
   funFacts: [
     { icon: "📍", text: "Paris, France" },
     { icon: "🛠️", text: "Ubuntu · Docker · WireGuard" },
-    { icon: "🏋️", text: "Weightlifting, competitive skiing" },
-    { icon: "🀄", text: "Learning Mandarin" },
+    { icon: "⛷️", text: "Competitive alpine skiing · Flèche de Vermeil" },
+    { icon: "🗣️", text: "English B2/C1 · learning Mandarin" },
+    { icon: "🏋️", text: "Weightlifting" },
     { icon: "🖨️", text: "3D printing on a Bambu Lab" },
   ],
 };
@@ -41,14 +44,14 @@ export const skillDomains = [
   {
     num: "02",
     title: "Infra & Self-hosting",
-    text: "Ubuntu Server, Docker, Portainer. My homelab runs game servers, websites and this very portfolio on a recycled PC. If it can be self-hosted, I self-host it.",
-    stack: ["Ubuntu", "Docker", "Portainer", "Nginx", "Bash"],
+    text: "Ubuntu Server, Docker, Portainer. My homelab runs game servers, websites and this very portfolio on a recycled PC, with services managed through systemd and cron. If it can be self-hosted, I self-host it.",
+    stack: ["Ubuntu", "Docker", "Portainer", "Nginx", "systemd", "Bash"],
   },
   {
     num: "03",
     title: "Dev",
-    text: "React, Laravel, Python, Java. Currently building a full CMDB app for the DSI: database design, REST API, front-end and the GitLab CI/CD pipeline behind it.",
-    stack: ["React", "Laravel", "Python", "Java", "SQL"],
+    text: "Full-stack across React, Angular, Laravel and .NET, plus Python and Java. Currently building a full CMDB app for the DSI: database design, REST API, front-end and the GitLab CI/CD pipeline behind it.",
+    stack: ["React", "Angular", "Laravel", ".NET", "Python", "SQL"],
   },
   {
     num: "04",
@@ -134,10 +137,10 @@ export const journey = [
   },
   {
     period: "2025 - 2028",
-    title: "Engineering Degree, FISA apprenticeship",
-    org: "ENSIIE, Évry",
+    title: "Engineering Degree, Computer Science & Mathematics",
+    org: "ENSIIE, Évry-Courcouronnes (FISA apprenticeship)",
     type: "education",
-    text: "Computer science engineering with a focus on systems and networks. Graph theory, SAT solvers, statistics.",
+    text: "Engineering degree in computer science and mathematics, on the FISA apprenticeship track. Graph theory, SAT solvers, statistics.",
   },
   {
     period: "2025, 4 months",
