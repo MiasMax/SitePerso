@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+*.log
+
+# Personal AI context exports (not site code)
+*_context_*.md
