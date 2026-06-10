@@ -25,10 +25,10 @@ const PORT = process.env.PORT || 3000;
  * Unconfigured services return { status: "unknown" }.
  * ------------------------------------------------------------------ */
 const SERVICES = {
-  // homelab:      { host: "127.0.0.1", port: 9443 },
-  // vpn:          { host: "127.0.0.1", port: 51820 },
-  // genshinguess: { host: "127.0.0.1", port: 8080 },
-  // games:        { host: "127.0.0.1", port: 25565 },
+  // homelab:      { host: "127.0.0.1", port: 9443 },  // Portainer
+  // vpn:          { host: "127.0.0.1", port: 51820 }, // WireGuard
+  // genshinguess: { host: "127.0.0.1", port: 80 },    // Apache
+  // cockpit:      { host: "127.0.0.1", port: 9090 },  // Cockpit web console
 };
 
 /* ---------- /api/status — real metrics via the Node os module ---------- */

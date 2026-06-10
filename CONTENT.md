@@ -17,6 +17,12 @@ Most content is now filled in `src/data/content.js`. What's left:
 - The CV lists GitHub as `MaxenceTournaud` but the site links to `MiasMax`.
   Pick one and align both.
 - Homelab hardware: board and RAM are in, add CPU/storage if you want.
+- **Game server statuses** (`gameServers` in `content.js`): I guessed which
+  are always-on vs on-demand. Currently live = Minecraft Vanilla + Terraria;
+  on-demand = Empyrion, Palworld, Minecraft Modded, Hytale. Adjust the
+  `status` field per game ("live" or "on-demand").
+- **Hytale**: included as you asked, marked on-demand. Double-check the wording
+  you want since the game isn't publicly released.
 
 ## Functional TODOs
 

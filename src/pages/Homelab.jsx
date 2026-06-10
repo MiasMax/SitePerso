@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { homelab } from "../data/content.js";
+import { homelab, gameServers } from "../data/content.js";
 import { UptimeBadge } from "../components/ProjectCard.jsx";
 
 const POLL_MS = 30_000;
@@ -62,6 +62,78 @@ function LiveStats() {
   );
 }
 
+/**
+ * Interactive game-server panel: a grid of tiles. Click one to load its
+ * details into a terminal-style readout. Live = always on, on-demand =
+ * spun up on request.
+ */
+function GameServers() {
+  const [selected, setSelected] = useState(0);
+  const game = gameServers[selected];
+  const liveCount = gameServers.filter((g) => g.status === "live").length;
+
+  return (
+    <div className="games-panel reveal">
+      <div className="games-grid" role="tablist" aria-label="Game servers">
+        {gameServers.map((g, i) => (
+          <button
+            key={g.name}
+            role="tab"
+            aria-selected={i === selected}
+            className={`game-tile ${i === selected ? "active" : ""}`}
+            onClick={() => setSelected(i)}
+          >
+            <span className="game-glyph" aria-hidden="true">
+              {g.glyph}
+            </span>
+            <span className="game-name">{g.name}</span>
+            <span className={`game-status game-${g.status}`}>
+              <span className="game-dot" />
+              {g.status === "live" ? "live" : "on demand"}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div className="game-detail mono">
+        <div className="game-detail-bar">
+          <span className="t-dot t-red" />
+          <span className="t-dot t-yellow" />
+          <span className="t-dot t-green" />
+          <span className="game-detail-title">
+            maxence@homelab: ~/games/{game.name.toLowerCase().replace(/\s+/g, "-")}
+          </span>
+        </div>
+        <div className="game-detail-body">
+          <p className="game-cmd">
+            <span className="accent">$</span> status {game.name.toLowerCase().replace(/\s+/g, "")}
+          </p>
+          <p>
+            <span className="game-key">name</span> {game.full}
+          </p>
+          <p>
+            <span className="game-key">type</span> {game.genre}
+          </p>
+          <p>
+            <span className="game-key">mode</span>{" "}
+            <span className={`game-status game-${game.status}`}>
+              <span className="game-dot" />
+              {game.status === "live" ? "always on" : "on demand"}
+            </span>
+          </p>
+          <p className="game-blurb">
+            <span className="game-key">info</span> {game.blurb}
+          </p>
+          <p className="game-foot">
+            <span className="accent">#</span> {gameServers.length} servers
+            configured, {liveCount} always on
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Homelab() {
   return (
     <section className="section page-top">
@@ -108,6 +180,13 @@ export default function Homelab() {
           </div>
         ))}
       </div>
+
+      <h2 className="block-title reveal">Game servers</h2>
+      <p className="page-sub reveal">
+        Servers I run for friends. Click one for details. The heavy ones spin
+        up on demand to spare the RAM.
+      </p>
+      <GameServers />
     </section>
   );
 }

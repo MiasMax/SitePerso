@@ -100,8 +100,8 @@ export const projects = [
   {
     title: "Genshinguess",
     description:
-      "A guessing-game website built and hosted end to end: front-end, PHP back-end, SQL database, deployment and server admin, all handled solo.",
-    tags: ["JavaScript", "PHP", "SQL", "Self-hosted"],
+      "A guessing-game website built and hosted end to end on a classic LAMP-style stack: Apache, PHP back-end, MariaDB database, deployment and server admin all handled solo.",
+    tags: ["PHP", "Apache", "MariaDB", "JavaScript", "Self-hosted"],
     status: "Done",
     github: "[GITHUB_URL]",
     service: "genshinguess",
@@ -171,6 +171,7 @@ containers. This page shows what actually runs on it, live.`,
     { label: "RAM", value: "16 GB" },
     { label: "OS", value: "Ubuntu Server" },
     { label: "Containers", value: "Docker + Portainer" },
+    { label: "Management", value: "Cockpit web console" },
     { label: "Access", value: "WireGuard VPN" },
   ],
   services: [
@@ -185,14 +186,14 @@ containers. This page shows what actually runs on it, live.`,
       service: "vpn",
     },
     {
-      name: "Game servers",
-      desc: "Minecraft Java and friends, for me and my friends.",
-      service: "games",
+      name: "Genshinguess",
+      desc: "Self-hosted guessing game, Apache + PHP + MariaDB.",
+      service: "genshinguess",
     },
     {
-      name: "Genshinguess",
-      desc: "Self-hosted guessing game, full PHP stack.",
-      service: "genshinguess",
+      name: "Cockpit",
+      desc: "Web console for the server: logs, services, resources.",
+      service: "cockpit",
     },
   ],
   diagram: `            INTERNET
@@ -204,11 +205,12 @@ containers. This page shows what actually runs on it, live.`,
 [ HOME SERVER ]   [ WireGuard peer ]
   Ubuntu Server      laptop, phone
      |
-  [ Docker ]
-     ├── nginx (reverse proxy)
-     ├── portfolio
-     ├── game servers
-     └── ...`,
+     ├── Cockpit (web admin)
+     └── Docker
+          ├── nginx (reverse proxy)
+          ├── portfolio
+          ├── genshinguess (LAMP)
+          └── game servers`,
   roadmap: [
     "Hardened reverse proxy with HTTPS everywhere",
     "Fail2ban + UFW lockdown",
@@ -216,6 +218,65 @@ containers. This page shows what actually runs on it, live.`,
     "Monitoring with Grafana + Prometheus",
   ],
 };
+
+// Interactive game-server panel on the Homelab page.
+// status: "live" = always on (green), "on-demand" = spun up on request (amber).
+export const gameServers = [
+  {
+    name: "Empyrion",
+    full: "Empyrion - Galactic Survival",
+    glyph: "🚀",
+    genre: "Space survival sandbox",
+    status: "on-demand",
+    blurb:
+      "Voxel space survival with ships, planets and bases. Heavy on RAM, so it spins up when the crew wants to play.",
+  },
+  {
+    name: "Palworld",
+    full: "Palworld",
+    glyph: "🐾",
+    genre: "Open-world survival",
+    status: "on-demand",
+    blurb:
+      "Dedicated Palworld world for co-op. Resource hungry, launched on demand.",
+  },
+  {
+    name: "Minecraft",
+    full: "Minecraft (Vanilla)",
+    glyph: "🟩",
+    genre: "Sandbox",
+    status: "live",
+    blurb:
+      "Vanilla Java server, light enough to leave running around the clock.",
+  },
+  {
+    name: "MC Modded",
+    full: "Minecraft (Modded)",
+    glyph: "🛠️",
+    genre: "Modpack sandbox",
+    status: "on-demand",
+    blurb:
+      "Modded Forge/Fabric pack. More mods, more memory, so it runs on request.",
+  },
+  {
+    name: "Terraria",
+    full: "Terraria",
+    glyph: "🌳",
+    genre: "2D sandbox adventure",
+    status: "live",
+    blurb:
+      "Lightweight Terraria world, always available for a quick session.",
+  },
+  {
+    name: "Hytale",
+    full: "Hytale",
+    glyph: "⚔️",
+    genre: "Adventure sandbox",
+    status: "on-demand",
+    blurb:
+      "Set up and waiting. Spun up on demand whenever there's something to test.",
+  },
+];
 
 export const contact = {
   github: "https://github.com/MiasMax",
