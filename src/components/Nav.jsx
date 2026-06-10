@@ -1,23 +1,41 @@
+import { NavLink } from "react-router-dom";
+import useTheme from "../hooks/useTheme.js";
+
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#journey", label: "Journey" },
-  { href: "#contact", label: "Contact" },
+  { to: "/", label: "Home" },
+  { to: "/projects", label: "Projects" },
+  { to: "/homelab", label: "Homelab" },
 ];
 
 export default function Nav() {
+  const { theme, toggle } = useTheme();
+
   return (
     <header className="nav">
-      <a href="#top" className="nav-brand">
-        maxence<span className="accent">.</span>
-      </a>
+      <NavLink to="/" className="nav-brand">
+        MT<span className="accent">/</span>
+      </NavLink>
       <nav className="nav-links">
         {links.map((l) => (
-          <a key={l.href} href={l.href}>
+          <NavLink
+            key={l.to}
+            to={l.to}
+            end={l.to === "/"}
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             {l.label}
-          </a>
+          </NavLink>
         ))}
+        <button
+          className="theme-toggle"
+          onClick={toggle}
+          title={
+            theme === "day" ? "Switch to dark mode" : "Switch to light mode"
+          }
+          aria-label="Toggle theme"
+        >
+          {theme === "day" ? "☾" : "☀"}
+        </button>
       </nav>
     </header>
   );

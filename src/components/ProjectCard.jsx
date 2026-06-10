@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { projects } from "../data/content.js";
 
 const UPTIME_POLL_MS = 60_000;
 
 /**
- * Optional live uptime badge for self-hosted services.
+ * Live uptime badge for self-hosted services.
  * Green = up, red = down, gray = unknown/unreachable.
  */
-function UptimeBadge({ service }) {
+export function UptimeBadge({ service }) {
   const [state, setState] = useState({ status: "unknown", latency: null });
 
   useEffect(() => {
@@ -41,11 +40,14 @@ function UptimeBadge({ service }) {
   );
 }
 
-function ProjectCard({ project }) {
+export default function ProjectCard({ project, index }) {
   const hasGithub = project.github && !project.github.startsWith("[");
 
   return (
     <article className="project-card reveal">
+      <span className="project-num mono">
+        {String(index + 1).padStart(2, "0")}
+      </span>
       <div className="project-head">
         <h3>{project.title}</h3>
         <span
@@ -82,18 +84,5 @@ function ProjectCard({ project }) {
         {project.service && <UptimeBadge service={project.service} />}
       </div>
     </article>
-  );
-}
-
-export default function Projects() {
-  return (
-    <section id="projects" className="section">
-      <h2 className="section-title reveal">Projects — Homelab & Personal</h2>
-      <div className="projects-grid">
-        {projects.map((p) => (
-          <ProjectCard key={p.title} project={p} />
-        ))}
-      </div>
-    </section>
   );
 }

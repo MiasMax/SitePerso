@@ -1,0 +1,218 @@
+import { Link } from "react-router-dom";
+import {
+  identity,
+  about,
+  skillDomains,
+  projects,
+  journey,
+  contact,
+} from "../data/content.js";
+import useTyping from "../hooks/useTyping.js";
+import ProjectCard from "../components/ProjectCard.jsx";
+import { useState } from "react";
+
+function Hero() {
+  const typed = useTyping(identity.typingRoles);
+
+  return (
+    <section className="hero">
+      <div className="hero-inner">
+        <p className="hero-kicker mono">
+          {identity.location} · {new Date().getFullYear()}
+        </p>
+        <h1 className="hero-name">
+          {identity.firstName}
+          <br />
+          <span className="hero-lastname">{identity.lastName}</span>
+        </h1>
+        <p className="hero-typing mono">
+          &gt; {typed}
+          <span className="cursor">▍</span>
+        </p>
+        <div className="hero-ctas">
+          <Link to="/projects" className="btn btn-primary">
+            Projects
+          </Link>
+          <Link to="/homelab" className="btn btn-outline">
+            My homelab
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Full-width scrolling strip, pure CSS animation. */
+function Marquee() {
+  const items = Array(8).fill(identity.tagline);
+  return (
+    <div className="marquee" aria-hidden="true">
+      <div className="marquee-track">
+        {items.map((t, i) => (
+          <span key={i}>{t} · </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <section className="section">
+      <h2 className="section-title reveal">
+        <span className="title-num mono">01</span> Who
+      </h2>
+      <p className="about-intro reveal">{about.intro}</p>
+      <div className="fun-facts reveal">
+        {about.funFacts.map((f) => (
+          <span key={f.text} className="fun-fact">
+            <span aria-hidden="true">{f.icon}</span> {f.text}
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section className="section">
+      <h2 className="section-title reveal">
+        <span className="title-num mono">02</span> What I do
+      </h2>
+      <div className="domain-grid">
+        {skillDomains.map((d) => (
+          <div key={d.title} className="domain-card reveal">
+            <span className="domain-num mono">{d.num}</span>
+            <h3>{d.title}</h3>
+            <p>{d.text}</p>
+            <div className="domain-stack mono">{d.stack.join(" · ")}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FeaturedProjects() {
+  const featured = projects.filter((p) => p.featured);
+  return (
+    <section className="section">
+      <h2 className="section-title reveal">
+        <span className="title-num mono">03</span> Selected work
+      </h2>
+      <div className="projects-grid">
+        {featured.map((p, i) => (
+          <ProjectCard key={p.title} project={p} index={i} />
+        ))}
+      </div>
+      <div className="section-more reveal">
+        <Link to="/projects" className="btn btn-outline">
+          All projects →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function Journey() {
+  return (
+    <section className="section">
+      <h2 className="section-title reveal">
+        <span className="title-num mono">04</span> Journey
+      </h2>
+      <div className="journey-list">
+        {journey.map((item) => (
+          <div key={item.title} className="journey-row reveal">
+            <span className="journey-period mono">{item.period}</span>
+            <div className="journey-body">
+              <h3>
+                {item.title}
+                <span className={`journey-type type-${item.type}`}>
+                  {item.type === "work" ? "work" : "school"}
+                </span>
+              </h3>
+              <p className="journey-org">{item.org}</p>
+              <p className="journey-text">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const [sent, setSent] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // TODO: wire this form to Formspree
+    //   1. Create a form at https://formspree.io and get its endpoint ID
+    //   2. Replace this handler with: <form action="https://formspree.io/f/YOUR_ID" method="POST">
+    setSent(true);
+  }
+
+  const showGithub = !contact.github.startsWith("[");
+  const showLinkedin = !contact.linkedin.startsWith("[");
+
+  return (
+    <section className="section" id="contact">
+      <h2 className="section-title reveal">
+        <span className="title-num mono">05</span> Contact
+      </h2>
+      <div className="contact-wrap reveal">
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input type="text" name="name" required autoComplete="name" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required autoComplete="email" />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" required />
+          </label>
+          <button type="submit" className="btn btn-primary" disabled={sent}>
+            {sent ? "Thanks! (form not wired yet)" : "Send"}
+          </button>
+        </form>
+        <div className="contact-links">
+          <p>Elsewhere:</p>
+          <a
+            href={showGithub ? contact.github : "#contact"}
+            className="btn btn-outline"
+            target={showGithub ? "_blank" : undefined}
+            rel="noreferrer"
+          >
+            GitHub {showGithub ? "↗" : "(soon)"}
+          </a>
+          <a
+            href={showLinkedin ? contact.linkedin : "#contact"}
+            className="btn btn-outline"
+            target={showLinkedin ? "_blank" : undefined}
+            rel="noreferrer"
+          >
+            LinkedIn {showLinkedin ? "↗" : "(soon)"}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      <Marquee />
+      <About />
+      <Skills />
+      <FeaturedProjects />
+      <Journey />
+      <Contact />
+    </>
+  );
+}

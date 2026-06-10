@@ -1,12 +1,12 @@
 /**
- * All site content lives here, extracted from the ai_context files.
- * Remaining [PLACEHOLDERS] are listed in CONTENT.md at the repo root.
+ * All site content lives here. Remaining [PLACEHOLDERS] are listed
+ * in CONTENT.md at the repo root.
  */
 
 export const identity = {
-  name: "Maxence",
-  fullName: "Maxence Tournaud",
-  subtitle: "Network Engineer · DevOps · Self-hoster",
+  firstName: "MAXENCE",
+  lastName: "TOURNAUD",
+  tagline: "NETWORK · INFRA · CODE",
   typingRoles: [
     "Network Engineer",
     "DevOps enthusiast",
@@ -17,106 +17,74 @@ export const identity = {
 };
 
 export const about = {
-  bio: `I'm Maxence, an apprentice network & infrastructure engineer at the
-Paris Brain Institute (Institut du Cerveau) and an engineering student at
-ENSIIE in the FISA apprenticeship program. I work at the interface between
-networking, infrastructure and code — configuring datacenter networks and
-building internal tools for the DSI by day, running my own self-hosted
-homelab by night. I'd rather understand how things work under the hood than
-rely on turnkey solutions.`,
-  values: [
-    {
-      title: "Learn by building",
-      text: "Real projects over academic exercises — from a recycled PC turned home server to a full CMDB application.",
-    },
-    {
-      title: "Understand the stack",
-      text: "From OS internals and VPN cryptography to network architecture — I dig until it makes sense.",
-    },
-    {
-      title: "Pragmatic & direct",
-      text: "Go straight to the point, document what matters, keep code quality high (Git, reviews, linting).",
-    },
-  ],
+  intro: `Network and infrastructure apprentice at the Paris Brain Institute,
+engineering student at ENSIIE. Days spent in datacenter configs,
+evenings spent breaking my own home server. I like knowing exactly
+what runs where, and why.`,
   funFacts: [
-    { icon: "📍", text: "Based in Paris, France" },
-    { icon: "🛠️", text: "Daily stack: Ubuntu · Docker · WireGuard" },
-    { icon: "🏋️", text: "Weightlifting & competitive skiing" },
-    { icon: "🀄", text: "Learning Mandarin Chinese" },
+    { icon: "📍", text: "Paris, France" },
+    { icon: "🛠️", text: "Ubuntu · Docker · WireGuard" },
+    { icon: "🏋️", text: "Weightlifting, competitive skiing" },
+    { icon: "🀄", text: "Learning Mandarin" },
     { icon: "🖨️", text: "3D printing on a Bambu Lab" },
   ],
 };
 
-// level: 1–5 (1 = beginner, 5 = expert)
-export const skillGroups = [
+// One card per domain. Concrete sentences, no skill bars.
+export const skillDomains = [
   {
-    category: "Networking",
-    skills: [
-      { name: "TCP/IP · VLANs", level: 4 },
-      { name: "Firewall & flow matrices", level: 4 },
-      { name: "WireGuard VPN", level: 4 },
-      { name: "Datacenter switching", level: 3 },
-      { name: "Reverse proxy · TLS · SNI", level: 3 },
-    ],
+    num: "01",
+    title: "Network",
+    text: "VLANs, firewall flow matrices, WireGuard tunnels. I configure datacenter switches at work and run my own VPN at home, down to the iptables rules.",
+    stack: ["TCP/IP", "VLAN", "WireGuard", "Firewall", "TLS"],
   },
   {
-    category: "DevOps / Infra",
-    skills: [
-      { name: "Linux / Ubuntu Server", level: 4 },
-      { name: "Docker · Portainer", level: 4 },
-      { name: "Git · GitLab CI/CD", level: 4 },
-      { name: "Bash scripting", level: 3 },
-      { name: "Ansible · Netmiko", level: 2, note: "learning" },
-      { name: "Raspberry Pi · GPIO", level: 3 },
-    ],
+    num: "02",
+    title: "Infra & Self-hosting",
+    text: "Ubuntu Server, Docker, Portainer. My homelab runs game servers, websites and this very portfolio on a recycled PC. If it can be self-hosted, I self-host it.",
+    stack: ["Ubuntu", "Docker", "Portainer", "Nginx", "Bash"],
   },
   {
-    category: "Dev",
-    skills: [
-      { name: "JavaScript / React", level: 3 },
-      { name: "PHP / Laravel", level: 4 },
-      { name: "Python", level: 3 },
-      { name: "Java", level: 4 },
-      { name: "SQL", level: 3 },
-      { name: "C#", level: 3 },
-    ],
+    num: "03",
+    title: "Dev",
+    text: "React, Laravel, Python, Java. Currently building a full CMDB app for the DSI: database design, REST API, front-end and the GitLab CI/CD pipeline behind it.",
+    stack: ["React", "Laravel", "Python", "Java", "SQL"],
   },
   {
-    category: "Tools",
-    skills: [
-      { name: "Azure DevOps", level: 3 },
-      { name: "SharePoint", level: 3 },
-      { name: "Blender", level: 2 },
-      { name: "Grafana · Prometheus", level: 2, note: "learning" },
-      { name: "Cockpit", level: 3 },
-    ],
+    num: "04",
+    title: "Automation",
+    text: "Next on the list: Ansible and Netmiko. The goal is NetOps, treating network gear like code instead of clicking through configs one switch at a time.",
+    stack: ["Ansible", "Netmiko", "GitLab CI/CD", "Python"],
   },
 ];
 
 // service: key used by GET /api/uptime/:service (optional live badge)
+// featured: shown on the home page
 export const projects = [
   {
     title: "Homelab Server",
     description:
-      "A recycled PC turned Ubuntu home server hosting Docker services: game servers (Minecraft Java & more), static websites and this very portfolio. Next up: hardened reverse proxy, Fail2ban + UFW, automated volume backups.",
+      "A recycled PC turned Ubuntu home server. Runs game servers, static sites and this portfolio in Docker. Next steps: hardened reverse proxy, Fail2ban, automated backups.",
     tags: ["Ubuntu Server", "Docker", "Portainer", "Nginx"],
     status: "In Progress",
     github: "[GITHUB_URL]",
     service: "homelab",
+    featured: true,
   },
   {
     title: "WireGuard VPN",
     description:
-      "Full WireGuard tunnel between the home server and a roaming laptop for remote access to the LAN. Hand-configured routing, IP forwarding and iptables MASQUERADE — plus a deep dive into the Noise Protocol, Curve25519 and ChaCha20-Poly1305.",
+      "Hand-built WireGuard tunnel between my home server and a roaming laptop. Routing, IP forwarding, iptables MASQUERADE, plus a deep dive into the Noise Protocol and ChaCha20-Poly1305.",
     tags: ["WireGuard", "iptables", "Linux", "Cryptography"],
     status: "Done",
     github: "[GITHUB_URL]",
     service: "vpn",
+    featured: true,
   },
   {
     title: "Remote Power Control",
     description:
-      "Powering on a Wi-Fi-only desktop remotely without native Wake-on-LAN: a Shelly smart plug driven over its local REST API, paired with a Raspberry Pi Zero 2 W and a GPIO relay that simulates a press on the power button.",
+      "Powering on a Wi-Fi-only desktop from anywhere, without native Wake-on-LAN: a Shelly smart plug driven over its REST API, plus a Pi Zero 2 W and a GPIO relay wired to the power button.",
     tags: ["Raspberry Pi", "GPIO", "REST API", "Bash"],
     status: "In Progress",
     github: "[GITHUB_URL]",
@@ -124,14 +92,15 @@ export const projects = [
   {
     title: "CMDB Application",
     description:
-      "Full-stack configuration management database for the Paris Brain Institute's DSI: inventory of servers, network assets and links, with a fully queryable database and an automated GitLab CI/CD deployment pipeline. ~5-month professional project.",
+      "Full-stack configuration management database for the Paris Brain Institute's DSI. Inventory of servers, network assets and links, queryable database, automated GitLab CI/CD deployment.",
     tags: ["React", "Laravel", "SQL", "Docker", "GitLab CI/CD"],
     status: "In Progress",
+    featured: true,
   },
   {
     title: "Genshinguess",
     description:
-      "A full-stack guessing-game website built and self-hosted end to end: front-end, PHP back-end, SQL database, deployment and server administration all handled solo.",
+      "A guessing-game website built and hosted end to end: front-end, PHP back-end, SQL database, deployment and server admin, all handled solo.",
     tags: ["JavaScript", "PHP", "SQL", "Self-hosted"],
     status: "Done",
     github: "[GITHUB_URL]",
@@ -140,7 +109,7 @@ export const projects = [
   {
     title: "INSEE Salary Analysis",
     description:
-      "Statistical analysis of 2023 net monthly salaries across French départements: descriptive statistics, normality testing (Kolmogorov-Smirnov, skewness/kurtosis) and data visualisation, with a programmatically generated slide deck.",
+      "Statistical analysis of 2023 net salaries across French departements: normality tests, skewness, kurtosis and data viz, with a slide deck generated from code.",
     tags: ["Python", "pandas", "seaborn", "scipy"],
     status: "Done",
     github: "[GITHUB_URL]",
@@ -149,47 +118,88 @@ export const projects = [
 
 export const journey = [
   {
-    period: "Sept 2025 — Sept 2028",
+    period: "2025 - 2028",
     title: "Network & Infrastructure Apprentice",
-    org: "Paris Brain Institute (Institut du Cerveau) — DSI, Pitié-Salpêtrière Hospital, Paris",
+    org: "Paris Brain Institute (Institut du Cerveau), DSI",
     type: "work",
-    points: [
-      "Datacenter network administration: switch & port configuration, VLANs, firewall flow openings",
-      "Building the DSI's IT service catalogue (structured forms, Arcops validation workflows)",
-      "Developing internal tools — CMDB application for asset & configuration management",
-    ],
+    text: "Datacenter network admin: switches, VLANs, firewall flows. Building the IT service catalogue and a CMDB app for the team.",
   },
   {
-    period: "2025 — 2028",
-    title: "Engineering Degree — FISA (apprenticeship program)",
-    org: "ENSIIE — École Nationale Supérieure d'Informatique pour l'Industrie et l'Entreprise",
+    period: "2025 - 2028",
+    title: "Engineering Degree, FISA apprenticeship",
+    org: "ENSIIE, Évry",
     type: "education",
-    points: [
-      "Computer science engineering with a focus on systems & networks",
-      "Discrete mathematics, graph theory, computational logic (SAT solvers), statistics",
-    ],
+    text: "Computer science engineering with a focus on systems and networks. Graph theory, SAT solvers, statistics.",
   },
   {
-    period: "[DATES] — before Sept 2024",
+    period: "[DATES], before Sept 2024",
     title: "Software Developer Intern",
     org: "Suez Smart Solutions",
     type: "work",
-    points: [
-      "Secured API development in C# with cryptographic mechanisms and Newtonsoft.Json serialisation",
-      "Front-end mapping & geolocation features with OpenLayers, in collaboration with UX designers",
-      "Code quality work: ESLint, StyleCop, pull requests on Azure DevOps in an Agile team",
-    ],
+    text: "Secured API development in C#, mapping features with OpenLayers, code quality work with ESLint and StyleCop on Azure DevOps.",
   },
   {
     period: "[DATES]",
-    title: "BUT Informatique (2 years completed)",
+    title: "BUT Informatique (2 years)",
     org: "[INSTITUTION]",
     type: "education",
-    points: [
-      "University technology degree in computer science before joining ENSIIE",
-    ],
+    text: "University technology degree in computer science, before joining ENSIIE.",
   },
 ];
+
+// Homelab page
+export const homelab = {
+  intro: `An old PC, Ubuntu Server, a fixed IP and way too many Docker
+containers. This page shows what actually runs on it, live.`,
+  hardware: [
+    { label: "Host", value: "Recycled desktop PC" },
+    { label: "OS", value: "Ubuntu Server" },
+    { label: "Containers", value: "Docker + Portainer" },
+    { label: "Access", value: "WireGuard VPN" },
+  ],
+  services: [
+    {
+      name: "Portfolio",
+      desc: "This site. React build served by Express, in Docker.",
+      service: "homelab",
+    },
+    {
+      name: "WireGuard VPN",
+      desc: "Remote access to the LAN from my laptop, anywhere.",
+      service: "vpn",
+    },
+    {
+      name: "Game servers",
+      desc: "Minecraft Java and friends, for me and my friends.",
+      service: "games",
+    },
+    {
+      name: "Genshinguess",
+      desc: "Self-hosted guessing game, full PHP stack.",
+      service: "genshinguess",
+    },
+  ],
+  diagram: `            INTERNET
+               |
+        [ ISP router ]
+               |
+     ┌─────────┴─────────┐
+     |                   |
+[ HOME SERVER ]   [ WireGuard peer ]
+  Ubuntu Server      laptop, phone
+     |
+  [ Docker ]
+     ├── nginx (reverse proxy)
+     ├── portfolio
+     ├── game servers
+     └── ...`,
+  roadmap: [
+    "Hardened reverse proxy with HTTPS everywhere",
+    "Fail2ban + UFW lockdown",
+    "Automated backups of Docker volumes",
+    "Monitoring with Grafana + Prometheus",
+  ],
+};
 
 export const contact = {
   github: "[GITHUB_URL]",

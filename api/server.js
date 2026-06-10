@@ -28,6 +28,7 @@ const SERVICES = {
   // homelab:      { host: "127.0.0.1", port: 9443 },
   // vpn:          { host: "127.0.0.1", port: 51820 },
   // genshinguess: { host: "127.0.0.1", port: 8080 },
+  // games:        { host: "127.0.0.1", port: 25565 },
 };
 
 /* ---------- /api/status — real metrics via the Node os module ---------- */

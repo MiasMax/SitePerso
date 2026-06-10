@@ -1,0 +1,244 @@
+%========================================================================================
+%  CV - Maxence TOURNAUD
+%  Template    : moderncv (style "banking", couleur "blue")
+%  Compilation : pdfLaTeX × 2 passes  |  ou XeLaTeX
+%  Distribution: TeX Live / MiKTeX (paquet "moderncv" requis)
+%========================================================================================
+
+\documentclass[11pt, a4paper]{moderncv}
+
+% ----------------------------
+% STYLE & COULEUR
+% ----------------------------
+\moderncvstyle{banking}
+\moderncvcolor{blue}
+
+% ----------------------------
+% RÉDUCTION DE LA TAILLE DE L'EN-TÊTE
+% ----------------------------
+\renewcommand*{\namefont}{\fontsize{20}{22}\mdseries\upshape}
+\renewcommand*{\titlefont}{\fontsize{15}{12}\mdseries\upshape}
+
+% Réduction de l'espace vertical global de l'en-tête
+\makeatletter
+\renewcommand*{\makecvtitle}{%
+  \par\begingroup
+    \recomputelengths
+    \makecvhead
+    \par\vspace{-1.8em}
+  \endgroup
+}
+\makeatother
+
+% ----------------------------
+% ENCODAGE & LANGUE
+% ----------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% ----------------------------
+% MARGES — réduire les valeurs pour gagner de la place
+% ----------------------------
+\usepackage[top=1.2cm, bottom=1.2cm, left=1.5cm, right=1.5cm]{geometry}
+
+% ----------------------------
+% LARGEUR DE LA COLONNE DES DATES (à gauche)
+% ----------------------------
+\setlength{\hintscolumnwidth}{2.6cm}
+
+% ----------------------------
+% ESPACEMENT GLOBAL PLUS COMPACT
+% ----------------------------
+\AtBeginDocument{\setlength{\maketitlewidth}{\textwidth}}
+
+%========================================================================================
+% INFORMATIONS PERSONNELLES
+%========================================================================================
+\name{Maxence}{TOURNAUD}
+\title{Étudiant Ingénieur en Alternance Développement Logiciel \& Infrastructure IT}
+
+\address{Orsay (91)}{Île-de-France}{}
+\phone[mobile]{07~81~75~69~96}
+\email{tournaudmax@gmail.com}
+\social[linkedin]{maxence-tournaud}
+\social[github]{MaxenceTournaud}
+
+%========================================================================================
+\begin{document}
+%========================================================================================
+
+% ----------------------------
+% EN-TÊTE
+% ----------------------------
+\makecvtitle
+
+%========================================================================================
+% SECTION 1 : PROFIL / RÉSUMÉ PROFESSIONNEL
+%========================================================================================
+\section{Profil}
+
+\cvitem{}{%
+  Étudiant ingénieur à l'\textbf{ENSIIE} en alternance de 3~ans au sein de la DSI du
+  \textbf{Paris Brain Institute} (Hôpital Pitié-Salpêtrière, Paris).
+  Titulaire d'un \textbf{BUT Informatique} de l'Université Paris-Saclay
+  (\textit{Top~10, promotion de 63}), j'ai acquis une expérience concrète en
+  \textbf{développement full-stack} (React, Laravel, Angular, .NET) et en
+  \textbf{infrastructure IT} (Docker, CI/CD GitLab, Linux, LDAPS).
+  Autonome et rigoureux, je m'investis sur des projets à fort impact en
+  couvrant l'ensemble du cycle de développement de l'architecture au déploiement en étroite collaboration avec des équipes pluridisciplinaires.%
+}
+
+%========================================================================================
+% SECTION 2 : EXPÉRIENCES PROFESSIONNELLES
+% Ordre chronologique inversé (plus récente en premier)
+%========================================================================================
+\section{Expériences Professionnelles}
+
+% ----------------------------
+% 2.1  ALTERNANCE — Paris Brain Institute / ICM  [EN COURS]
+%      Source principale : Rapport d'activité
+% ----------------------------
+\cventry%
+  {Sept.~2025 - Sept.~2028}%
+  {Alternant Ingénieur - Développement \& Infrastructure IT}%
+  {Paris Brain Institute (ICM) - Direction des Systèmes d'Information}%
+  {Paris\,(75), Hôpital Pitié-Salpêtrière}%
+  {}% ← Grade / mention (laisser vide ou compléter)
+  {%
+    \textit{Pôle Infrastructure \& Réseaux (équipes CloudOps et Network).
+    Mission principale~: conception, développement et déploiement
+    d'une \textbf{CMDB} centralisant l'inventaire du parc informatique
+    pour l'ensemble de la DSI (serveurs, réseau, VLANs, logiciels).}%
+    \smallskip
+    \begin{itemize}
+
+        %-- DÉVELOPPEMENT APPLICATIF --
+        \item \textbf{Conception et développement d’une application de CMDB~:}
+        Conception et développement d’une application de \textbf{CMDB}, Réalisation de la modélisation des données, de la conception de l’API REST ainsi que de l’interface utilisateur. Développement des principales fonctionnalités métier permettant la gestion de l’inventaire complet (serveurs, équipements réseau, VLANs, adresses IP).
+        
+    \item \textbf{Sécurité \& gestion des accès~:}
+    Conception et implémentation d’un système de \textbf{rôles et permissions}
+    adossé à l’\textbf{Active Directory (LDAPS/TLS)}. Mise en place d’un contrôle
+    d’accès en lecture/écriture assurant la confidentialité des données sensibles.
+    Configuration de \textbf{TLS/LDAPS} pour sécuriser les échanges inter-serveurs,
+    notamment la transmission des identifiants utilisateurs vers l’Active Directory.
+        
+      %-- DÉPLOIEMENT & DEVOPS --
+      \item \textbf{DevOps \& Déploiement automatisé~:}
+            Architecturé une infrastructure de \textbf{3~serveurs} sous
+            \textbf{Docker} (front-end, back-end, BD) et déployé une chaîne
+            \textbf{CI\,/\,CD complète sur GitLab}~:
+            build automatique, registre d'images,
+            déploiement en production déclenché à chaque \textit{push} sur la branche principale.
+
+    \end{itemize}
+  }
+
+% ----------------------------
+% 2.2  Stage WebGames (2025 — 4 mois)
+% ----------------------------
+\cventry%
+  {2025\,(4\,mois)}%
+  {Stagiaire Développeur JavaScript}%
+  {WebGames}%
+  {Caen}%
+  {}%
+  {%
+    \begin{itemize}
+      \item Développé un \textbf{éditeur de cartes avancé} de plus de
+            \textbf{5\,200\,lignes\,JS}~: calques hiérarchiques,
+            groupes imbriqués, drag-\&-drop, rotation, sérialisation
+            et \textit{grid culling} pour scènes massives -
+            \textbf{livré et déployé en production}.
+      \item Résolu des défis algorithmiques complexes
+            (géométrie, structures de données, culling, responsivité)
+            avec livraisons continues.
+    \end{itemize}
+  }
+
+% ----------------------------
+% 2.3  Stage SUEZ Smart Solutions (2024 — 2,5 mois)
+% ----------------------------
+\cventry%
+  {2024\,(2,5\,mois)}%
+  {Stagiaire Développeur Full-Stack}%
+  {SUEZ Smart Solutions}%
+  {Île-de-France}%
+  {}%
+  {%
+    \begin{itemize}
+      \item Participé au développement 
+            d'\textbf{APIs sécurisées} (cryptographie) pour la gestion
+            du traitement d'eau.
+      \item Utilisé \textbf{Azure DevOps} en méthodologie agile
+            (gestion de projet, pull requests, résolution de conflits).
+    \end{itemize}
+  }
+
+% ----------------------------
+% 2.4  Projets personnels & universitaires (2022-2025)
+%      → Commenter ce bloc pour raccourcir le CV à 1 page
+% ----------------------------
+\cventry%
+  {2022 - 2025}%
+  {Projets Personnels \& Universitaires}%
+  {}{}{}%
+  {%
+    \begin{itemize}
+      \item \textbf{Jeu Battle Royale (Unity\,/\,C\#)} en équipe de 10~:
+            sérialisation des inputs joueur, conception du système d'armes ;
+            \textbf{responsable du dépôt GitHub}
+            (versioning et structuration du code).
+        \item \textbf{Home servers Linux~:}
+        Déploiement et administration de services auto-hébergés sous Linux, incluant
+        un \textbf{serveur web}, ainsi que
+        la configuration de \textbf{serveurs Steam} , avec
+        automatisation des tâches et du cycle de vie des services grâce à
+        \textbf{systemd} et \textbf{cron}.
+    \end{itemize}
+  }
+
+%========================================================================================
+% SECTION 3 : FORMATION
+%========================================================================================
+\section{Formation}
+
+% ----------------------------
+% 3.1  ENSIIE — Diplôme d'ingénieur (en cours)
+% ----------------------------
+\cventry%
+  {Sept.~2025 - Sept.~2028}%
+  {Diplôme d'Ingénieur - Informatique \& Mathématiques}%
+  {ENSIIE (École Nationale Supérieure d'Informatique
+   pour l'Industrie et l'Entreprise)}%
+  {Évry-Courcouronnes\,(91)}%
+  {}%
+  {Formation en alternance, 3\,ans.}
+
+% ----------------------------
+% 3.2  BUT Informatique — Université Paris-Saclay (obtenu)
+% ----------------------------
+\cventry%
+  {2022 - 2025}%
+  {BUT Informatique (Bac\,+3)}%
+  {Université Paris-Saclay, IUT d'Orsay}%
+  {Orsay\,(91)}%
+  {\textbf{Classement général~: Top\,10} sur une promotion de 63 étudiants}%
+  {%%}
+
+%========================================================================================
+% SECTION 5 : LANGUES
+%========================================================================================
+\section{Langues et Centres d'intérêt}
+
+\cvitemwithcomment{Français}{Langue maternelle}{}
+\cvitemwithcomment{Anglais}{Avancé (B2\,/\,C1)}{%
+  Lecture technique, communication professionnelle}
+  \textbf{Ski alpin de compétition} -
+  Titulaire de la \textit{Flèche de Vermeil} (récompense nationale).
+
+
+%========================================================================================
+\end{document}
+%========================================================================================

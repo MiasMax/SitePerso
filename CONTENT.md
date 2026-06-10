@@ -1,36 +1,35 @@
-# CONTENT.md — Remaining placeholders
+# CONTENT.md, remaining placeholders
 
-Everything that could be filled from the three AI context files has been filled
-directly in `src/data/content.js`. Below is what's still missing or uncertain —
-edit `src/data/content.js` (and `api/server.js` for services) to complete them.
+Everything that could be filled from the AI context files is already in
+`src/data/content.js`. Below is what's still missing. Edit
+`src/data/content.js` (and `api/server.js` for the uptime services).
 
 ## Placeholders to fill
 
 | Placeholder | Where | What's needed |
 |---|---|---|
-| `[GITHUB_URL]` | `contact.github` + each project's `github` field | Your GitHub profile URL and per-project repo URLs. None of the context files contained them. Project GitHub buttons stay hidden until filled. |
-| `[LINKEDIN_URL]` | `contact.linkedin` | Your LinkedIn profile URL. |
+| `[GITHUB_URL]` | `contact.github` + each project's `github` field | GitHub profile URL and per-project repo URLs. Project GitHub buttons stay hidden until filled. |
+| `[LINKEDIN_URL]` | `contact.linkedin` | LinkedIn profile URL. |
 | `[CONTACT_EMAIL]` | `contact.email` | Public contact email (only used if you decide to display it). |
-| `[DOMAIN]` | `footer.stack` / `footer.domain` | Your custom domain name, shown in the footer "Under the hood" modal. |
-| `[DATES]` (Suez) | `journey` — Suez Smart Solutions entry | Exact internship dates. Context files only say "before September 2024". |
-| `[DATES]` + `[INSTITUTION]` (BUT) | `journey` — BUT Informatique entry | Which IUT, and which years. Context files only say you completed 2 years of a BUT Informatique. |
+| `[DOMAIN]` | `footer.stack` / `footer.domain` | Custom domain, shown in the footer "Under the hood" modal. |
+| `[DATES]` (Suez) | `journey`, Suez Smart Solutions entry | Exact internship dates. Context files only said "before September 2024". |
+| `[DATES]` + `[INSTITUTION]` (BUT) | `journey`, BUT Informatique entry | Which IUT, and which years. |
 
 ## To verify (filled, but inferred)
 
-- **Skill levels** — estimated by merging the three context files (they
-  disagree in places, e.g. Git "advanced" vs "level unspecified"). Adjust the
-  `level` values (1–5) in `src/data/content.js` to taste.
-- **Bio wording** — synthesized in English from three French draft bios.
-- **CMDB project** — described as professional/in-progress (late 2025 → mid
-  2026 per the Gemini export); check the wording is OK to publish publicly
-  (it names your employer).
-- **Genshinguess** — no URL was in the context files; add a live link or an
-  uptime `service` mapping if it's still hosted.
+- Copy was rewritten in a more direct tone; check it sounds like you.
+- The CMDB project names your employer. Check that's OK to publish.
+- Homelab page hardware specs are generic ("recycled desktop PC"); add real
+  specs (CPU, RAM, storage) in `homelab.hardware` if you want.
 
 ## Functional TODOs
 
-- **Contact form** — UI-only. Wire it to Formspree: see the TODO comment in
-  `src/components/Contact.jsx`.
-- **Uptime badges** — `api/server.js` has an empty `SERVICES` map; add
-  `host`/`port` entries for `homelab`, `vpn`, `genshinguess` to turn the
-  gray "unknown" badges green/red.
+- **Contact form**: UI-only. Wire it to Formspree, see the TODO in
+  `src/pages/Home.jsx`.
+- **Uptime badges**: the `SERVICES` map in `api/server.js` is empty; add
+  `host`/`port` entries for `homelab`, `vpn`, `genshinguess`, `games` to turn
+  the gray "unknown" badges green/red.
+- **GitHub push**: remote is set to `git@github.com:MiasMax/SitePerso.git`
+  but your SSH key isn't registered on that account yet. Add the key from
+  `~/.ssh/id_ed25519.pub` at https://github.com/settings/keys then run
+  `git push -u origin main`.

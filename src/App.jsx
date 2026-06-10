@@ -1,30 +1,34 @@
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Nav from "./components/Nav.jsx";
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Skills from "./components/Skills.jsx";
-import Projects from "./components/Projects.jsx";
-import Journey from "./components/Journey.jsx";
-import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import InfraWidget from "./components/InfraWidget.jsx";
 import SudoEasterEgg from "./components/SudoEasterEgg.jsx";
-import useDayNight from "./hooks/useDayNight.js";
+import Home from "./pages/Home.jsx";
+import Projects from "./pages/Projects.jsx";
+import Homelab from "./pages/Homelab.jsx";
 import useReveal from "./hooks/useReveal.js";
 
 export default function App() {
-  useDayNight();
+  const { pathname } = useLocation();
+
+  // New page = scroll back to top. Reveal animations re-arm themselves
+  // via a MutationObserver inside useReveal.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   useReveal();
 
   return (
     <>
       <Nav />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Journey />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/homelab" element={<Homelab />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
       <InfraWidget />
